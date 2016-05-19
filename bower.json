@@ -1,0 +1,17 @@
+{
+  "name": "greenfieldGroup3",
+  "description": "MKS38 Greenfield project - Group 3",
+  "main": "index.js",
+  "authors": [
+    "tba"
+  ],
+  "license": "ISC",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
