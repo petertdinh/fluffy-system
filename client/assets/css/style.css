@@ -1,0 +1,9 @@
+.logo,.logo-header {
+    float: left;
+}
+.logo{
+    padding-top: 10px;
+}
+.clearfix{
+    clear: both;
+}
