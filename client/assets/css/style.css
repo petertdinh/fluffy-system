@@ -7,3 +7,6 @@
 .clearfix{
     clear: both;
 }
+#challenge{
+    border-style: solid;
+}
