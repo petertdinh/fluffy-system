@@ -29,3 +29,8 @@ app.post('/upload*', function(req, res) {
     	})
     })
 });
+
+app.get('/add', function(req, res){
+    var json = [{title: 'burrito', recipe: 'microwave'}, {title: 'quiche', recipe: 'microwave'}];
+    res.status(200).send(json);
+})

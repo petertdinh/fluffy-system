@@ -1,13 +1,64 @@
 'use strict';
 angular.module('app.add', [])
-    .controller('addController', function($scope, fileUpload) {
+    .controller('addController', function($scope, fileUpload, $http) {
+    $scope.instruction = null;
+    
+    $scope.getRecipes = function(){
+            $http.get('/add')
+            .then(function(res){
+                console.log(res.data);
+                $scope.recipes = res.data;
+        })
+    };
+    
     $scope.uploadFile = function(){
         var file = $scope.myFile;
         console.log('file is ');
         console.dir(file);
         fileUpload.uploadFileToUrl(file);
     };
+    
+    //call get recipes when controller is loaded
+    $scope.getRecipes();
+    
+    $scope.setRecipe = function(recipe){
+        console.log(recipe);
+        $scope.instruction = 'microwave';
+    }
+    
     })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     .directive('fileModel', function ($parse) {
     return {
         restrict: 'A',
@@ -25,9 +76,7 @@ angular.module('app.add', [])
     })
     .service('fileUpload', function ($http) {
     this.uploadFileToUrl = function(file){
-        var fd = new FormData();
-        fd.append('file', file);
-        $http.post('/upload' + String(file.name) + String(file.type), file, {
+        $http.post('/upload' + String(file.name), file, {
             transformRequest: angular.identity,
             headers: {'Content-Type': undefined}
         })
