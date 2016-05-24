@@ -5,22 +5,24 @@ angular.module('app', [
     'ngAnimate',
     'ng-fx',
     '720kb.fx',
+    'ngFileUpload',
     //custom modules
-    'app.challenge'
+    'app.add',
+    'app.home'
 ])
 
 .config(function($stateProvider, $urlRouterProvider, $httpProvider){
     $urlRouterProvider.otherwise('/');
     
     $stateProvider
-        .state('challenge', {
-            url: '/challenge',
-            templateUrl: 'app/components/challenge/challengeView.html',
-            animation: {
-                enter: 'slide-in-left-fade',
-                leave: 'slide-out-right-fade',
-                speed: 6000
-            },
-            controller: 'challengeController',
+        .state('add', {
+            url: '/add',
+            templateUrl: 'app/components/add/addView.html',
+            controller: 'addController',
+        })
+        .state('home', {
+            url: '/home',
+            templateUrl: 'app/components/home/homeView.html',
+            controller: 'homeController'
         })
 })
