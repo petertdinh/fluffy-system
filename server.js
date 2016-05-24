@@ -31,6 +31,6 @@ app.post('/upload*', function(req, res) {
 });
 
 app.get('/add', function(req, res){
-    var json = [{title: 'burrito', recipe: 'microwave'}, {title: 'quiche', recipe: 'microwave'}];
+    var json = [{title: 'burrito', recipe: 'microwave', ingredients: ['beans', 'rice', 'tortilla']}, {title: 'quiche', recipe: 'bake', ingredients: ['eggs', 'spinach']}];
     res.status(200).send(json);
 })

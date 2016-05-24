@@ -2,15 +2,18 @@
     <h2>Select a recipe!</h2>
     <div>
         <div class="dropdown" >
-            <select name="select" ng-model="selectedRecipe" ng-change="setRecipe(selectedRecipe)">
+            <select name="select" ng-model="selectedRecipe" ng-options="recipe as recipe.title for recipe in recipes" ng-change="setRecipe(selectedRecipe)">
               <option ng-repeat="recipe in recipes" ng-click="click()">{{recipe.title}}</option>
             </select>
         </div>
     </div>
-    <div ng-show="ingredients">Ingredients: </div>
-    <div ng-bind="ingredients"></div>
-    <div ng-show="instruction">Instructions: </div>
+    <div ng-show="ingredients"><strong>Ingredients: </strong></div>
+    <ul ng-show="ingredients">
+        <li ng-repeat="ingredient in ingredients" ng-bind="ingredient"></li>
+    </ul>
+    <div ng-show="instruction"><strong>Instructions: </strong></div>
     <div ng-bind="instruction"></div>
+    <br/>
     Comments:
     <div>
         <textarea ng-model="comments"></textarea>

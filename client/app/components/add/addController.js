@@ -1,6 +1,7 @@
 'use strict';
 angular.module('app.add', [])
     .controller('addController', function($scope, fileUpload, $http) {
+    $scope.ingredients = null;
     $scope.instruction = null;
     
     $scope.getRecipes = function(){
@@ -23,7 +24,8 @@ angular.module('app.add', [])
     
     $scope.setRecipe = function(recipe){
         console.log(recipe);
-        $scope.instruction = 'microwave';
+        $scope.ingredients = recipe.ingredients;
+        $scope.instruction = recipe.recipe;
     }
     
     })
