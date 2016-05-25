@@ -13,10 +13,18 @@ var recipes = require('./recipesAPI.js');
 // enter "npm run dev" to start the server with nodemon
 
 //DB
+// mongoose.connect('mongodb://127.0.0.1:27017/foodTest');
+// var db = mongoose.connection;
+
+// db.on('error', console.error.bind(console, 'connection error:'));
+
+// db.once('open', function() {
+//   console.log("Successfully connected");
+// });
 
 //App
-app.use(express.static(path.join(__dirname, 'client')));
-app.use(express.static(path.join(__dirname, 'node_modules')));
+app.use(express.static(path.join(__dirname, '../client')));
+app.use(express.static(path.join(__dirname, '../node_modules')));
 router(app);
 
 //Server
