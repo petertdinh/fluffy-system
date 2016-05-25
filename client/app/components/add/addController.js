@@ -7,10 +7,24 @@ angular.module('app.add', [])
     $scope.getRecipes = function(){
             $http.get('/add')
             .then(function(res){
-                console.log(res.data);
                 $scope.recipes = res.data;
         })
     };
+
+    $scope.submitPost = function(recipe){
+        var params = {
+            timeStamp : String(moment()._d).slice(4,21),
+            comments: $scope.comments,
+            recipe: recipe.title,
+            picture: $scope.myFile,
+        };
+        console.log(params);
+    	$http.post('/add', params)
+            .success(function(){    
+            })
+            .error(function(){
+            });
+    }
     
     $scope.uploadFile = function(){
         var file = $scope.myFile;
@@ -25,13 +39,7 @@ angular.module('app.add', [])
     $scope.setRecipe = function(recipe){
         $scope.ingredients = recipe.ingredients;
         $scope.instructions = recipe.instructions;
-    }
-    
-    $scope.submit = function(recipe, comments){
-        console.log(recipe.title);
-        console.log(comments);
-    }
-    
+    }    
     })
     .directive('fileModel', function ($parse) {
     return {

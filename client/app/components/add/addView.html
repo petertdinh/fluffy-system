@@ -1,4 +1,4 @@
-<div id="add">
+<div id="add" >
     <h2>Select a recipe!</h2>
     <div>
         <div class="dropdown" >
@@ -22,6 +22,6 @@
         <input type="file" file-model="myFile"/>
         <button ng-click="uploadFile()">upload</button>
     </div>
-    <input id="submit-button" type="button" value="Submit" ng-click="submit(selectedRecipe, comments)">
+    <input id="submit-button" type="button" value="Submit" ng-click="submitPost(selectedRecipe)">
     <button><a ui-sref="home">Close</a></button>
 </div>
