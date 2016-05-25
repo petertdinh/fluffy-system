@@ -7,12 +7,12 @@
             </select>
         </div>
     </div>
-    <div ng-show="ingredients"><strong>Ingredients: </strong></div>
-    <ul ng-show="ingredients">
-        <li ng-repeat="ingredient in ingredients" ng-bind="ingredient"></li>
-    </ul>
-    <div ng-show="instruction"><strong>Instructions: </strong></div>
-    <div ng-bind="instruction"></div>
+    <div class="ingredients" ng-show="ingredients"><strong>Ingredients: </strong></div>
+        <ul ng-show="ingredients">
+            <li ng-repeat="ingredient in ingredients" ng-bind="ingredient"></li>
+        </ul>
+    <div class="instructions" ng-show="instructions"><strong>Instructions: </strong></div>
+    <div ng-bind="instructions"></div>
     <br/>
     Comments:
     <div>
@@ -22,4 +22,6 @@
         <input type="file" file-model="myFile"/>
         <button ng-click="uploadFile()">upload</button>
     </div>
+    <input id="submit-button" type="button" value="Submit" ng-click="submit(selectedRecipe, comments)">
+    <button><a ui-sref="home">Close</a></button>
 </div>

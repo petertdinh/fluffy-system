@@ -2,7 +2,7 @@
 angular.module('app.add', [])
     .controller('addController', function($scope, fileUpload, $http) {
     $scope.ingredients = null;
-    $scope.instruction = null;
+    $scope.instructions = null;
     
     $scope.getRecipes = function(){
             $http.get('/add')
@@ -23,44 +23,16 @@ angular.module('app.add', [])
     $scope.getRecipes();
     
     $scope.setRecipe = function(recipe){
-        console.log(recipe);
         $scope.ingredients = recipe.ingredients;
-        $scope.instruction = recipe.recipe;
+        $scope.instructions = recipe.instructions;
+    }
+    
+    $scope.submit = function(recipe, comments){
+        console.log(recipe.title);
+        console.log(comments);
     }
     
     })
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     .directive('fileModel', function ($parse) {
     return {
         restrict: 'A',

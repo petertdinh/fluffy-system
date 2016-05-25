@@ -3,6 +3,7 @@ var express = require('express');
 var path = require('path');
 var fs = require('fs');
 var app = express();
+var recipes = require('./recipesAPI.js');
 
 app.set('port', process.env.PORT || 3000);
 var server = app.listen(app.get('port'), function() {
@@ -31,6 +32,5 @@ app.post('/upload*', function(req, res) {
 });
 
 app.get('/add', function(req, res){
-    var json = [{title: 'burrito', recipe: 'microwave', ingredients: ['beans', 'rice', 'tortilla']}, {title: 'quiche', recipe: 'bake', ingredients: ['eggs', 'spinach']}];
-    res.status(200).send(json);
-})
+    res.status(200).send(recipes.meals);
+});
