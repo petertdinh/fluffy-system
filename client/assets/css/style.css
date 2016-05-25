@@ -10,6 +10,14 @@
 #challenge{
     border-style: solid;
 }
-#add{
-    float: right;
+.bounce.ng-enter, .bounce.ng-leave {
+    animation-duration: 1s;
+}
+
+.bounce.ng-enter {
+   animation-name: bounceInLeft;
+}
+
+.bounce.ng-leave {
+   animation-name: bounceOutLeft;
 }
