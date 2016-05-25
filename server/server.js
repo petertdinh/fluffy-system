@@ -18,11 +18,16 @@ var recipes = require('./recipesAPI.js');
 
 //Server
 
-app.set('port', process.env.PORT || 3000);
-var server = app.listen(app.get('port'), function() {
-    var port = server.address().port;
-    console.log('listening on port ' + port);
-});
+var port = process.env.PORT || 3000;
+var server = http.createServer(app);
+server.listen(port);
+console.log('listening on port ', port);
+
+// app.set('port', process.env.PORT || 3000);
+// var server = app.listen(app.get('port'), function() {
+//     var port = server.address().port;
+//     console.log('listening on port ' + port);
+// });
 
 app.use(express.static(path.join(__dirname, 'client')));
 app.use(express.static(path.join(__dirname, 'node_modules')));
