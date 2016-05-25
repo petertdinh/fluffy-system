@@ -15,6 +15,9 @@ var recipes = require('./recipesAPI.js');
 //DB
 
 //App
+app.use(express.static(path.join(__dirname, 'client')));
+app.use(express.static(path.join(__dirname, 'node_modules')));
+router(app);
 
 //Server
 
@@ -29,26 +32,22 @@ console.log('listening on port ', port);
 //     console.log('listening on port ' + port);
 // });
 
-app.use(express.static(path.join(__dirname, 'client')));
-app.use(express.static(path.join(__dirname, 'node_modules')));
-
-
-app.post('/upload*', function(req, res) {
-    console.log(req.method, req.url);
-    var data = '';
-    req.setEncoding('binary');
-    req.on('data', function(chunk){
-    	data += chunk;
-    });
+// app.post('/upload*', function(req, res) {
+//     console.log(req.method, req.url);
+//     var data = '';
+//     req.setEncoding('binary');
+//     req.on('data', function(chunk){
+//     	data += chunk;
+//     });
     
-    req.on('end', function(){
-    	fs.writeFile('picture.png', data, 'binary', function(err){
-    		if(err) throw err;
-    		console.log('file saved');
-    	})
-    })
-});
+//     req.on('end', function(){
+//     	fs.writeFile('picture.png', data, 'binary', function(err){
+//     		if(err) throw err;
+//     		console.log('file saved');
+//     	})
+//     })
+// });
 
-app.get('/add', function(req, res){
-    res.status(200).send(recipes.meals);
-});
+// app.get('/add', function(req, res){
+//     res.status(200).send(recipes.meals);
+// });
