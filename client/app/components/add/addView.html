@@ -1,0 +1,27 @@
+<div id="add">
+    <h2>Select a recipe!</h2>
+    <div>
+        <div class="dropdown" >
+            <select name="select" ng-model="selectedRecipe" ng-options="recipe as recipe.title for recipe in recipes" ng-change="setRecipe(selectedRecipe)">
+              <option ng-repeat="recipe in recipes" ng-click="click()">{{recipe.title}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="ingredients" ng-show="ingredients"><strong>Ingredients: </strong></div>
+        <ul ng-show="ingredients">
+            <li ng-repeat="ingredient in ingredients" ng-bind="ingredient"></li>
+        </ul>
+    <div class="instructions" ng-show="instructions"><strong>Instructions: </strong></div>
+    <div ng-bind="instructions"></div>
+    <br/>
+    Comments:
+    <div>
+        <textarea ng-model="comments"></textarea>
+    </div>
+    <div id="upload">
+        <input type="file" file-model="myFile"/>
+        <button ng-click="uploadFile()">upload</button>
+    </div>
+    <input id="submit-button" type="button" value="Submit" ng-click="submit(selectedRecipe, comments)">
+    <button><a ui-sref="home">Close</a></button>
+</div>

@@ -7,3 +7,9 @@
 .clearfix{
     clear: both;
 }
+#challenge{
+    border-style: solid;
+}
+#add{
+    float: right;
+}
