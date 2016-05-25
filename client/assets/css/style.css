@@ -10,14 +10,14 @@
 #challenge{
     border-style: solid;
 }
-.bounce.ng-enter, .bounce.ng-leave {
+.animate.ng-enter, .animate.ng-leave {
     animation-duration: 1s;
 }
 
-.bounce.ng-enter {
+.animate.ng-enter {
    animation-name: bounceInLeft;
 }
 
-.bounce.ng-leave {
+.animate.ng-leave {
    animation-name: bounceOutLeft;
 }
