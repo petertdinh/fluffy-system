@@ -8,7 +8,6 @@ var fs = require('fs');
 var app = express();
 var router = require('./router');
 var mongoose = require('mongoose');
-var recipes = require('./recipesAPI.js');
 
 // enter "npm run dev" to start the server with nodemon
 
