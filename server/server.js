@@ -1,9 +1,22 @@
 
 var express = require('express');
+var http = require('http');
+var bodyParser = require('body-parser');
+var morgan = require('morgan');
 var path = require('path');
 var fs = require('fs');
 var app = express();
+var router = require('./router');
+var mongoose = require('mongoose');
 var recipes = require('./recipesAPI.js');
+
+// enter "npm run dev" to start the server with nodemon
+
+//DB
+
+//App
+
+//Server
 
 app.set('port', process.env.PORT || 3000);
 var server = app.listen(app.get('port'), function() {
