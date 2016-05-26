@@ -2,11 +2,8 @@
 angular.module('app', [
     //angular modules
     'ui.router',
-    'ngFileUpload',
   	//animation dependencies
     'ngAnimate',
-    'ng-fx',
-    '720kb.fx',
     //custom modules
     'app.add',
     'app.home'
