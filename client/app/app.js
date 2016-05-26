@@ -10,7 +10,7 @@ angular.module('app', [
 ])
 
 .config(function($stateProvider, $urlRouterProvider, $httpProvider){
-    $urlRouterProvider.otherwise('/');
+    $urlRouterProvider.otherwise('/home');
     
     $stateProvider
         .state('add', {
