@@ -1,4 +1,4 @@
-<div id="home" ng-repeat="feed in feeds | orderBy:'-timeStamp':reverse">
+<div id="home" ng-repeat="feed in feeds | orderBy:'-timeStamp'">
 <div>
     <div>
         <img>
@@ -6,7 +6,7 @@
     <div>
         <div><h3>{{feed.mealName}}</h3></div>
         <div><img src={{"/uploads/"+feed.mealPhoto}} height="56" />
-        <div>{{feed.timeStamp}}</div>
+        <div>{{feed.displayTime}}</div>
         <div>{{feed.mealNotes}}</div>
     </div>
 </div>

@@ -24,7 +24,8 @@ app.get('/home', function(req, res){
     var posts = posts.map(function(post){
       var time = moment(post.timeStamp).fromNow();
       var copy = { 
-        timeStamp: time,
+        timeStamp: post.timeStamp,
+        displayTime: time,
         mealPhoto: post.mealPhoto,
         mealName: post.mealName,
         mealNotes: post.mealNotes
