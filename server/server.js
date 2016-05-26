@@ -24,7 +24,7 @@ var mongoose = require('mongoose');
 //App
 app.use(morgan('combined'));
 app.use(express.static(path.join(__dirname, '../client')));
-app.use(express.static(path.join(__dirname, '../node_modules')));
+app.use(express.static(path.join(__dirname, '../node_modules')));//remove
 router(app);
 
 //Server
