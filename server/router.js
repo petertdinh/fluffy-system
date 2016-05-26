@@ -1,3 +1,5 @@
+var recipes = require('./recipesAPI.js');
+
 module.exports = function(app){
   app.post('/upload*', function(req, res) {
     console.log(req.method, req.url);

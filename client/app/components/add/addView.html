@@ -18,10 +18,10 @@
     <div>
         <textarea ng-model="comments"></textarea>
     </div>
-    <div id="upload">
-        <input type="file" file-model="myFile"/>
-        <button ng-click="uploadFile()">upload</button>
-    </div>
-    <input id="submit-button" type="button" value="Submit" ng-click="submitPost(selectedRecipe)">
+        <form action="/upload" method="POST" enctype="multipart/form-data">
+            <input type="file" name="image">
+            <br>
+            <input type="submit" value="submit">
+        </form>
     <button><a ui-sref="home">Close</a></button>
 </div>
