@@ -12,18 +12,20 @@ var mongoose = require('mongoose');
 
 //DB
 mongoose.connect('mongodb://localhost:test/posts');
-// var db = mongoose.connection;
 
-// db.on('error', console.error.bind(console, 'connection error:'));
 
-// db.once('open', function() {
-//   console.log("Successfully connected");
-// });
+var db = mongoose.connection;
+
+db.on('error', console.error.bind(console, 'connection error:'));
+
+db.once('open', function() {
+  console.log("Successfully connected");
+});
 
 //App
 app.use(morgan('combined'));
 app.use(express.static(path.join(__dirname, '../client')));
-app.use(bodyParser.json({type: '*/*'}));
+//app.use(bodyParser.json({type: '*/*'}));
 router(app);
 
 //Server

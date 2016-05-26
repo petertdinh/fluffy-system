@@ -2,6 +2,7 @@
 var recipes = require('./recipesAPI.js');
 var multer = require('multer');
 var fs = require('fs');
+var posts = require("./models/post.js");
 
 var upload = multer({ dest: 'server/uploads/',
     filename: function(req, file, cb) {
@@ -15,8 +16,18 @@ app.get('/add', function(req, res){
 });
 
 app.post('/upload', upload.fields([{name: 'image'}, {name: 'text'}, {name: 'title'}]), function(req, res) {
-    console.log(req);
+    //console.log(req);
     res.redirect('/');
+    var user1 = new posts.Post({ timeStamp: Date.now(),
+      mealPhoto:  req.files['image'][0].filename,
+      mealName: req.body.title,
+      mealNotes:  req.body.text
+    });
+    user1.save(function (err, callback) {
+      if (err) return console.error(err);
+      console.log("saved!", user1);
+    });
+
 });
 
 app.get('/uploads/*', function(req, res) {
@@ -27,4 +38,6 @@ app.get('/uploads/*', function(req, res) {
     });
 });
 }
+
+
 
