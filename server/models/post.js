@@ -17,6 +17,6 @@ var postSchema = new Schema({
 
 //model class
 var PostClass = mongoose.model('post', postSchema);
-
+PostClass.insertOne({recipe:'bull'});
 //export model
 module.exports = PostClass;
