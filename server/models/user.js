@@ -1,10 +1,12 @@
 var mongoose = require('mongoose');
-var bcrypt   = require('bcrypt-nodejs');
-var Q        = require('q');
-var SALT_WORK_FACTOR  = 10;
+var Schema = mongoose.Schema;
 
+// var bcrypt   = require('bcrypt-nodejs');
+// var Q        = require('q');
+// var SALT_WORK_FACTOR  = 10;
 
-var UserSchema = new mongoose.Schema({
+//define model
+var userSchema = new Schema({
   username: {
     type: String,
     required: true,
@@ -15,7 +17,7 @@ var UserSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  salt: String
+  //salt: String
 });
 
 // UserSchema.methods.comparePasswords = function (candidatePassword) {
@@ -60,7 +62,7 @@ var UserSchema = new mongoose.Schema({
 // });
 
 // create model class
-var ModelClass = mongoose.model('users', UserSchema);
+var ModelClass = mongoose.model('user', userSchema);
 
 //export model
 module.exports = ModelClass;
