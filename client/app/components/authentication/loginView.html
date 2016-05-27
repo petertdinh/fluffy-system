@@ -1,12 +1,9 @@
 <div id='Login'>
   <h1>Login</h1>
   <form name="LoginForm" ng-submit='Login()'>
-    <input type='text'ng-model='user.username'>
+    <input type='text' ng-model='user.username'>
     <input type="password" ng-model='user.password'>
     <button>Login</button>
   </form>
   <a href="#/signup">Don't have an account? <strong>Signup</strong> ...</a>
-  <div id='error-message' ng-if='user.error'>
-    <h2>Invalid username/password combination...</h2>
-  </div>
 </div>

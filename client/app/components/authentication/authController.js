@@ -1,3 +1,15 @@
 'use strict';
 angular.module('app.auth', [])
-	.controller('authController')
+	.controller('authController', function($scope, Auth){
+		$scope.user = {};
+
+		$scope.login = function(){
+			Auth.login($scope.user);
+			//returns a promise, will need to handle that
+		};
+
+		$scope.signup = function(){
+			Auth.signup($scope.user);
+			//returns a promise, will need to handle that
+		};
+	})
