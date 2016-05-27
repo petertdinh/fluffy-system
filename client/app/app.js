@@ -36,7 +36,7 @@ angular.module('app', [
         .state('login', {
             url: '/login',
             templateUrl: 'app/components/authentication/loginView.html',
-            controller: 'authController'
+            controller: 'authController',
             authenticate: false,
         })
         .state('signup', {
