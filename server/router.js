@@ -46,10 +46,11 @@ app.post('/upload', upload.fields([{name: 'image'}, {name: 'text'}, {name: 'titl
     });
     user1.save(function (err, callback) {
       if (err) return console.error(err);
-      console.log("saved!", user1);
+      //console.log("saved!", user1);
     });
 
 });
+
 
 app.get('/uploads/*', function(req, res) {
     res.writeHead(200, {'Content-Type': 'image/png'});

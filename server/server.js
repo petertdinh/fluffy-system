@@ -22,6 +22,7 @@ db.once('open', function() {
   console.log("Successfully connected");
 });
 
+
 //App
 app.use(morgan('combined'));
 app.use(express.static(path.join(__dirname, '../client')));

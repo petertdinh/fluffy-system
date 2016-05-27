@@ -10,7 +10,7 @@
 #challenge{
     border-style: solid;
 }
-.animate.ng-enter, .animate.ng-leave {
+.animate.ng-enter, .animate.ng-leave{
     animation-duration: 1s;
 }
 
@@ -21,3 +21,4 @@
 .animate.ng-leave {
    animation-name: bounceOutLeft;
 }
+
