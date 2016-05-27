@@ -18,5 +18,4 @@ angular.module('app.add', [])
        $scope.ingredients = recipe.ingredients;
        $scope.instructions = recipe.instructions;
        $scope.title = recipe.title;
-       $scope.mealIcon = recipe.mealIcon;
    }        });
