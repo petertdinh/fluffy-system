@@ -4,6 +4,7 @@ angular.module('app.auth', [])
 		$scope.user = {};
 
 		$scope.login = function(){
+			console.log($scope.user);
 			Auth.login($scope.user);
 			//returns a promise, will need to handle that
 		};

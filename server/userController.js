@@ -1,4 +1,4 @@
-var User = require('./userModel.js'),
+var User = require('./models/user.js'),
     Q    = require('q'),
     jwt  = require('jwt-simple');
 
@@ -30,10 +30,10 @@ module.exports = {
   },
 
   signup: function (req, res, next) {
-    var username  = req.body.username,
-        password  = req.body.password,
-        create,
-        newUser;
+    var username  = req.body.username;
+    var password  = req.body.password;
+    var create;
+    var newUser;
 
     var findOne = Q.nbind(User.findOne, User);
 
