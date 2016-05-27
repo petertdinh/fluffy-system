@@ -5,7 +5,7 @@ var fs = require('fs');
 var posts = require("./models/post.js");
 var moment = require('moment')
 
-var upload = multer({ dest: 'uploads/',
+var upload = multer({ dest: 'server/uploads/',
     filename: function(req, file, cb) {
         cb(null, file.fieldname + '-' + Date.now())
     }
