@@ -24,8 +24,8 @@ db.once('open', function() {
 
 //App
 app.use(morgan('combined'));
-app.use(express.static(path.join(__dirname, '../client')));
-//app.use(bodyParser.json({type: '*/*'}));
+//app.use(express.static(path.join(__dirname, '../client')));
+// app.use(bodyParser.json({type: 'application/*+json'}));
 router(app);
 
 //Server
