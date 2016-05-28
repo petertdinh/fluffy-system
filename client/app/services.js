@@ -10,7 +10,9 @@ angular.module('app.services', [])
 
 		var signup = function(user){
 			return $http.post('/signup', user)
-						.then()
+						.then(function (resp){
+							return resp.data.token;
+						})
 		};
 
 		return {
