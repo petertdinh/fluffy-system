@@ -11,7 +11,7 @@ module.exports = {
     //if either password or username are missing,
     //return error message
     if(!username || !password) {
-      return res.status(422).send({ error: 'You must provide both a username and a password' });
+      return res.status(422).send({ error: 'You must provide both a username and a password.' });
     }
 
     //See if a user with the given email exists

@@ -1,9 +1,10 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
+var bcrypt   = require('bcrypt-nodejs');
+var SALT_WORK_FACTOR  = 10;
 
-// var bcrypt   = require('bcrypt-nodejs');
 // var Q        = require('q');
-// var SALT_WORK_FACTOR  = 10;
+
 
 //define model
 var userSchema = new Schema({
@@ -20,7 +21,32 @@ var userSchema = new Schema({
   //salt: String
 });
 
-// UserSchema.methods.comparePasswords = function (candidatePassword) {
+//run function before saving user model
+userSchema.pre('save', function (next) {
+  var user = this;
+
+  // only hash the password if it has been modified (or is new)
+  // if (!user.isModified('password')) {
+  //   return next();
+  // }
+
+  // generate a salt
+  bcrypt.genSalt(SALT_WORK_FACTOR, function(err, salt) {
+    if (err) { return next(err); }
+
+    // hash the password along with our new salt
+    bcrypt.hash(user.password, salt, null, function(err, hash) {
+      if (err) { return next(err); }
+
+      // override the cleartext password with the hashed one
+      user.password = hash;
+      //user.salt = salt;
+      next();
+    });
+  });
+});
+
+// userSchema.methods.comparePasswords = function (candidatePassword) {
 //   var defer = Q.defer();
 //   var savedPassword = this.password;
 //   bcrypt.compare(candidatePassword, savedPassword, function (err, isMatch) {
@@ -33,33 +59,7 @@ var userSchema = new Schema({
 //   return defer.promise;
 // };
 
-// UserSchema.pre('save', function (next) {
-//   var user = this;
 
-//   // only hash the password if it has been modified (or is new)
-//   if (!user.isModified('password')) {
-//     return next();
-//   }
-
-//   // generate a salt
-//   bcrypt.genSalt(SALT_WORK_FACTOR, function(err, salt) {
-//     if (err) {
-//       return next(err);
-//     }
-
-//     // hash the password along with our new salt
-//     bcrypt.hash(user.password, salt, null, function(err, hash) {
-//       if (err) {
-//         return next(err);
-//       }
-
-//       // override the cleartext password with the hashed one
-//       user.password = hash;
-//       user.salt = salt;
-//       next();
-//     });
-//   });
-// });
 
 // create model class
 var ModelClass = mongoose.model('user', userSchema);
