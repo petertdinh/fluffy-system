@@ -1,5 +1,7 @@
 <div id="add" >
-   <h2>Select a recipe!</h2>
+
+   <div class="container">
+<h2>Select a recipe!</h2>
    <div>
        <div class="dropdown" >
            <select name="select" ng-model="selectedRecipe" ng-options="recipe as recipe.title for recipe in recipes" ng-change="setRecipe(selectedRecipe)">
@@ -16,13 +18,19 @@
    <br/>
    <div class="mealIcon" ng-show="mealIcon"><img ng-src="{{mealIcon}}"/></div>
    <br/>
-   Comments:
-       <form action="/upload" method="POST" enctype="multipart/form-data">
-           <input type="file" name="image">
-           <input type="text" name="text">
-           <input ng-hide="hide" ng-model="title" name="title">
-           <br>
-           <input type="submit" value="submit">
-       </form>
-   <button><a ui-sref="home">Close</a></button>
+<form action="/upload" method="POST" enctype="multipart/form-data">
+  <fieldset class="form-group">
+    <label for="exampleTextarea">Comments</label>
+    <textarea class="form-control" id="exampleTextarea" rows="3" name="text"></textarea>
+  </fieldset>
+  <fieldset class="form-group">
+    <label for="exampleInputFile">File input</label>
+    <input type="file" class="form-control-file" id="exampleInputFile" name="image">
+    <input ng-hide="hide" ng-model="title" name="title">
+    <small class="text-muted">This is some placeholder block-level help text for the above input. It's a bit lighter and easily wraps to a new line.</small>
+  </fieldset>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
 </div>
+</div>
+
