@@ -23,6 +23,7 @@ var userSchema = new Schema({
 
 //run function before saving user model
 userSchema.pre('save', function (next) {
+  //access the user model
   var user = this;
 
   // only hash the password if it has been modified (or is new)
@@ -30,7 +31,7 @@ userSchema.pre('save', function (next) {
   //   return next();
   // }
 
-  // generate a salt
+  // generate a salt and run callback
   bcrypt.genSalt(SALT_WORK_FACTOR, function(err, salt) {
     if (err) { return next(err); }
 
@@ -41,6 +42,7 @@ userSchema.pre('save', function (next) {
       // override the cleartext password with the hashed one
       user.password = hash;
       //user.salt = salt;
+      //save the model
       next();
     });
   });

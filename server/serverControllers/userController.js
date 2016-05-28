@@ -1,6 +1,12 @@
-//var jwt  = require('jwt-simple');
-var User = require('../models/user.js');
-var Q    = require('q');
+var jwt  = require('jwt-simple');
+var User = require('../models/user');
+var config = require('../config');
+// var Q    = require('q');
+
+function tokenForUser(user) {
+  var timestamp = new Date().getTime();
+  return jwt.encode({ sub: user.id, iat: timestamp }, config.secret);
+}
 
 module.exports = {
   signup: function (req, res, next) {
@@ -32,41 +38,12 @@ module.exports = {
         //return an error on failed save
         if(err) { return next(err); }
 
-        // respond to request indicating the user was created
-        res.json({ success: true });
+        // respond to request indicating the user was created 
+        //create and return token
+        res.json({ token: tokenForUser(user) });
        });
     });
 
-    
-
-
-    
-    // findOne({username: username})
-    //   .then(function(user) {
-    //     if (user) {
-    //       next(new Error('User already exist!'));
-    //     } 
-    //     else {
-    //       // make a new user if not one
-    //       // create = Q.nbind(User.create, User);
-    //       // newUser = {
-    //       //   username: username,
-    //       //   password: password
-    //       };
-    //       // return create(newUser);
-
-    //     }
-    //     )
-      // })
-  //     .then(function (user) {
-  //       // create token to send back for auth
-  //       var token = jwt.encode(user, 'secret');
-  //       res.json({token: token});
-  //     })
-  //     .fail(function (error) {
-  //       next(error);
-  //     });
-  // }, 
   // login: function (req, res, next) {
   //   var username = req.body.username;
   //   var password = req.body.password;
