@@ -1,4 +1,6 @@
 var Authentication = require('./serverControllers/userController');
+var passportService = require('./services/passport');
+
 var bodyParser = require('body-parser');
 var recipes = require('./recipesAPI.js');
 var multer = require('multer');
@@ -7,7 +9,10 @@ var posts = require("./models/post.js");
 var moment = require('moment')
 
 // create application/json parser 
-var jsonParser = bodyParser.json()
+var jsonParser = bodyParser.json();
+
+//create passport middleware object
+var requireAuth = passportService.authenticate('jwt', { session: false });
 
 var upload = multer({ dest: 'uploads/',
     filename: function(req, file, cb) {
@@ -16,6 +21,12 @@ var upload = multer({ dest: 'uploads/',
 });
 
 module.exports = function(app){
+
+  app.get ('/', requireAuth, function(req, res) {
+    
+    res.send({hi:'there'});
+  } );
+
   app.post('/signup', jsonParser, Authentication.signup);
 
   app.get('/add', function(req, res){
