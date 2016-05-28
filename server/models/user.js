@@ -1,10 +1,13 @@
 var mongoose = require('mongoose');
+var Schema = mongoose.Schema;
 var bcrypt   = require('bcrypt-nodejs');
-var Q        = require('q');
 var SALT_WORK_FACTOR  = 10;
 
+// var Q        = require('q');
 
-var UserSchema = new mongoose.Schema({
+
+//define model
+var userSchema = new Schema({
   username: {
     type: String,
     required: true,
@@ -15,48 +18,53 @@ var UserSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  salt: String
+  //salt: String
 });
 
-UserSchema.methods.comparePasswords = function (candidatePassword) {
-  var defer = Q.defer();
-  var savedPassword = this.password;
-  bcrypt.compare(candidatePassword, savedPassword, function (err, isMatch) {
-    if (err) {
-      defer.reject(err);
-    } else {
-      defer.resolve(isMatch);
-    }
-  });
-  return defer.promise;
-};
-
-UserSchema.pre('save', function (next) {
+//run function before saving user model
+userSchema.pre('save', function (next) {
+  //access the user model
   var user = this;
 
   // only hash the password if it has been modified (or is new)
-  if (!user.isModified('password')) {
-    return next();
-  }
+  // if (!user.isModified('password')) {
+  //   return next();
+  // }
 
-  // generate a salt
+  // generate a salt and run callback
   bcrypt.genSalt(SALT_WORK_FACTOR, function(err, salt) {
-    if (err) {
-      return next(err);
-    }
+    if (err) { return next(err); }
 
     // hash the password along with our new salt
     bcrypt.hash(user.password, salt, null, function(err, hash) {
-      if (err) {
-        return next(err);
-      }
+      if (err) { return next(err); }
 
       // override the cleartext password with the hashed one
       user.password = hash;
-      user.salt = salt;
+      //user.salt = salt;
+      //save the model
       next();
     });
   });
 });
 
-module.exports = mongoose.model('users', UserSchema);
+// userSchema.methods.comparePasswords = function (candidatePassword) {
+//   var defer = Q.defer();
+//   var savedPassword = this.password;
+//   bcrypt.compare(candidatePassword, savedPassword, function (err, isMatch) {
+//     if (err) {
+//       defer.reject(err);
+//     } else {
+//       defer.resolve(isMatch);
+//     }
+//   });
+//   return defer.promise;
+// };
+
+
+
+// create model class
+var ModelClass = mongoose.model('user', userSchema);
+
+//export model
+module.exports = ModelClass;
