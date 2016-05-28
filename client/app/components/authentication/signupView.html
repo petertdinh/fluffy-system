@@ -1,4 +1,4 @@
-
+<!-- 
 <div id='signup'>
   <h1>signup</h1>
   <form name="signupForm" ng-submit='signup()'>
@@ -7,4 +7,93 @@
     <button>Signup</button>
   </form>
   <a href="#/login">Already have an account? <strong>Login</strong> ...</a>
-</div>
+</div> -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Login</title>
+    <style>
+    	body {
+    	  padding-top: 40px;
+    	  padding-bottom: 40px;
+    	  background-color: #eee;
+    	}
+
+    	.form-signup {
+    	  max-width: 330px;
+    	  padding: 15px;
+    	  margin: 0 auto;
+    	}
+    	.form-signup .form-signup-heading,
+    	.form-signup .checkbox {
+    	  margin-bottom: 10px;
+    	}
+    	.form-signup .checkbox {
+    	  font-weight: normal;
+    	}
+    	.form-signup .form-control {
+    	  position: relative;
+    	  height: auto;
+    	  -webkit-box-sizing: border-box;
+    	     -moz-box-sizing: border-box;
+    	          box-sizing: border-box;
+    	  padding: 10px;
+    	  font-size: 16px;
+    	}
+    	.form-signup .form-control:focus {
+    	  z-index: 2;
+    	}
+    	.form-signup input[type="text"] {
+    	  margin-bottom: 1px;
+    	  border-bottom-right-radius: 0;
+    	  border-bottom-left-radius: 0;
+    	}
+    	.form-signup input[type="email"] {
+    	  margin-bottom: 1px;
+    	  border-bottom-right-radius: 0;
+    	  border-bottom-left-radius: 0;
+    	}
+    	.form-signup input[type="password"] {
+    	  margin-bottom: 1px;
+    	  border-top-left-radius: 0;
+    	  border-top-right-radius: 0;
+    	}
+    	#check{
+    		color: red;
+    		margin-bottom: 5px;
+    	}
+    	#submit{
+    		margin-bottom: 4px;
+    	}
+    </style>
+  </head>
+
+  <body>
+
+    <div class="container">
+
+      <form class="form-signup" ng-submit='signup()'>
+        <h2 class="form-signup-heading">Create an account</h2>
+        <label for="inputUsername" class="sr-only"></label>
+        <input type="text" id="inputUsername" class="form-control" placeholder="Username" ng-model="user.username" required autofocus>
+        <input type="email" id="inputEmail" class="form-control" placeholder="Email" ng-model="user.email" required autofocus>
+        <label for="inputPassword" class="sr-only"></label>
+        <input type="password" id="inputPassword" class="form-control" placeholder="Password" ng-model="user.password" required>
+        <input type="password" id="inputPassword" class="form-control" placeholder="Confirm Password" ng-model="user.confirm" required>
+        <div id="check" ng-hide="check">Password does not match, try again.</div>
+        <div>
+        	<button id="submit" class="btn btn-lg btn-primary btn-block" type="submit">Signup!</button>
+        </div>
+        <div>
+        	<a href="#/login">Already have an account? <strong>Login!</strong></a>
+        </div>
+      </form>
+
+    </div>
+  </body>
+</html>
