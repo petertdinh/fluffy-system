@@ -42,41 +42,45 @@ module.exports = {
         //create and return token
         res.json({ token: tokenForUser(user) });
        });
-    });
+    })
+  },
 
-  // login: function (req, res, next) {
-  //   var username = req.body.username;
-  //   var password = req.body.password;
+  signin: function (req, res, next) {
+    //username and password have checked out
+    //we are giving the user a token
+    res.send( { token: tokenForUser(req.user) });
+  }
+ //  login: function (req, res, next) {
+ //    var username = req.body.username;
+ //    var password = req.body.password;
 
-  //   //return error message if username & password are not submitted
+ //    //return error message if username & password are not submitted
 
-  //   if(!username || !password){
-  //     return res.status(422).send({error: 'Please provide username and password.' });
-  //   }
+ //    if(!username || !password){
+ //      return res.status(422).send({error: 'Please provide username and password.' });
+ //    }
 
-  //   var findUser = Q.nbind(User.findOne, User);
-  //   findUser({username: username})
-  //     .then(function (user) {
-  //       if (!user) {
-  //         next(new Error('User does not exist'));
-  //       } else {
-  //         return user.comparePasswords(password)
-  //           .then(function(foundUser) {
-  //             if (foundUser) {
-  //               var token = jwt.encode(user, 'secret');
-  //               res.json({token: token});
-  //             } else {
-  //               return next(new Error('No user'));
-  //             }
-  //           });
-  //       }
-  //     })
-  //     .fail(function (error) {
-  //       next(error);
-  //     });
-  // },
-
-  
+ //    var findUser = Q.nbind(User.findOne, User);
+ //    findUser({username: username})
+ //      .then(function (user) {
+ //        if (!user) {
+ //          next(new Error('User does not exist'));
+ //        } else {
+ //          return user.comparePasswords(password)
+ //            .then(function(foundUser) {
+ //              if (foundUser) {
+ //                var token = jwt.encode(user, 'secret');
+ //                res.json({token: token});
+ //              } else {
+ //                return next(new Error('No user'));
+ //              }
+ //            });
+ //        }
+ //      })
+ //      .fail(function (error) {
+ //        next(error);
+ //      });
+ //  },
 
  // checkAuth: function (req, res, next) {
  //    // checking to see if the user is authenticated
@@ -102,5 +106,5 @@ module.exports = {
  //        });
  //    }
  //  } 
-}
+
 };
