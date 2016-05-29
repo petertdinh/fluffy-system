@@ -11,8 +11,9 @@ var moment = require('moment')
 // create application/json parser 
 var jsonParser = bodyParser.json();
 
-//create passport middleware object
-var requireAuth = passportService.authenticate('jwt', { session: false });
+//create passport middleware objects
+var requireAuth = passportService.authenticate('jwt',  { session: false });
+var requireSignin = passportService.authenticate( 'local', { session: false});
 
 
 
@@ -21,7 +22,7 @@ var upload = multer({ dest: 'server/uploads/',
         cb(null, file.fieldname + '-' + Date.now())
     }
 });
-
+//add 
 module.exports = function(app){
 
   app.get ('/', requireAuth, function(req, res) {
@@ -30,6 +31,8 @@ module.exports = function(app){
   } );
 
   app.post('/signup', jsonParser, Authentication.signup);
+
+  app.post('/signin', jsonParser, requireSignin, Authentication.signin);
 
   app.get('/add', function(req, res){
       res.status(200).send(recipes.meals);
