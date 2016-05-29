@@ -9,7 +9,9 @@ angular.module('app.add', [])
            .then(function(res){
                $scope.recipes = res.data;
        })
-   };    $scope.hide = true;
+   };    
+
+   $scope.hide = true;
    
    //call get recipes when controller is loaded
    $scope.getRecipes();
@@ -19,4 +21,5 @@ angular.module('app.add', [])
        $scope.instructions = recipe.instructions;
        $scope.title = recipe.title;
        $scope.mealIcon = recipe.mealIcon;
-   }        });
+   }        
+});
