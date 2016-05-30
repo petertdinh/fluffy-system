@@ -22,15 +22,16 @@
     </head>
     <body>
 
-    <div>
-    <nav class="navbar navbar-findcond navbar-fixed-top">
+    <div ng-controller="authController">
+    <nav class="navbar navbar-findcond navbar-fixed-top" ng-if="isAuth()">
         <div class="container">
             <div class="navbar-header">
                 <a class="navbar-brand" href="#">Greenfield</a>
             </div>
             <div class="collapse navbar-collapse" id="navbar">
                 <ul class="nav navbar-nav navbar-right">
-                    <li class="active"><a ui-sref="add">Add a Meal<span class="sr-only">(current)</span></a></li>
+                    <li class="active"><a ui-sref="add">Add a Meal</a></li>
+                    <li class="logout" ng-click='logout()'><a>Logout</a></li>
                 </ul>
             </div>
         </div>
