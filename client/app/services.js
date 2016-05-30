@@ -15,8 +15,19 @@ angular.module('app.services', [])
 						})
 		};
 
+		var isAuth = function () {
+		  return !!$window.localStorage.getItem('com.bomb');
+		};
+
+		var logout = function () {
+		  $window.localStorage.removeItem('com.bomb');
+		  $location.path('#/login');
+		};
+
 		return {
 			login: login,
-			signup: signup
+			signup: signup,
+			isAuth: isAuth,
+			logout: logout,
 		};
 	})
