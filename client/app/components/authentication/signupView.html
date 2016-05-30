@@ -85,7 +85,7 @@
         <label for="inputPassword" class="sr-only"></label>
         <input type="password" id="inputPassword" class="form-control" placeholder="Password" ng-model="user.password" required>
         <input type="password" id="inputPassword" class="form-control" placeholder="Confirm Password" ng-model="user.confirm" required>
-        <div id="check" ng-hide="check">Password does not match, try again.</div>
+        <div id="check" ng-show="check">Password does not match, try again.</div>
         <div>
         	<button id="submit" class="btn btn-lg btn-primary btn-block" type="submit">Signup!</button>
         </div>
