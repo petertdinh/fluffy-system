@@ -21,6 +21,7 @@ angular.module('app.auth', [])
 				$scope.check = false;
 				Auth.signup($scope.user)
 				.then(function (token){
+						console.log(token);
 						$window.localStorage.setItem('com.bomb', token);
 						$location.path('/home');
 					})
@@ -31,5 +32,15 @@ angular.module('app.auth', [])
 				} else {
 					$scope.check = true;
 				}
+		}
+
+		$scope.isAuth = function() {
+		  // will return true if user is logged in
+		  return Auth.isAuth();
+		};
+
+		$scope.logout = function(){
+			console.log('hi');
+			Auth.logout();
 		}
 	});

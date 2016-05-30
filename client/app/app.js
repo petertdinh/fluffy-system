@@ -25,13 +25,7 @@ angular.module('app', [
             url: '/home',
             templateUrl: 'app/components/home/homeView.html',
             controller: 'homeController',
-            authentication: true,
-        })
-        .state('landing', {
-            url: '/',
-            templateUrl: 'app/components/landing/landingView.html',
-            controller: 'landingController',
-            authenticate: false,
+            authenticate: true,
         })
         .state('login', {
             url: '/login',
@@ -45,4 +39,29 @@ angular.module('app', [
             controller: 'authController',
             authenticate: false,
         })
+
+        $httpProvider.interceptors.push('AttachTokens');
 })
+.factory('AttachTokens', function($window){
+	var attach = {
+		request: function(object){
+			var jwt = $window.localStorage.getItem('com.bomb');
+			if (jwt) {
+				object.headers['x-access-token'] = jwt;
+			}
+			object.headers['Allow-Control-Allow-Origin'] = '*';
+			return object;
+		}
+	};
+	return attach;
+})
+.run(function ($rootScope, $state, $location, Auth) {
+	  $rootScope.$on("$stateChangeStart", function(event, toState, toParams, fromState, fromParams){
+	    if (toState.authenticate && !Auth.isAuth()){
+	      // User isn’t authenticated
+	      $state.transitionTo("login");
+	      event.preventDefault();
+	    }
+	  });
+
+  });
