@@ -8,8 +8,6 @@ var multer = require('multer');
 var fs = require('fs');
 var posts = require("./models/post.js");
 var moment = require('moment');
-var sendgrid = require('sendgrid')('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');
-
 
 // create application/json parser 
 var jsonParser = bodyParser.json();
