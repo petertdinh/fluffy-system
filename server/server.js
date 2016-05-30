@@ -11,7 +11,9 @@ var mongoose = require('mongoose');
 // enter "npm run dev" to start the server with nodemon
 
 //DB
-mongoose.connect('mongodb://localhost:test/posts');
+mongoose.connect('mongodb://localhost/posts',function(){
+   mongoose.connection.db.dropDatabase();
+});
 
 
 var db = mongoose.connection;

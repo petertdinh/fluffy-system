@@ -1,6 +1,7 @@
 var jwt  = require('jwt-simple');
 var User = require('../models/user');
 var config = require('../config');
+var sendgrid = require('sendgrid')('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');
 // var Q    = require('q');
 
 function tokenForUser(user) {
@@ -10,9 +11,9 @@ function tokenForUser(user) {
 
 module.exports = {
   signup: function (req, res, next) {
-    
     var username  = req.body.username;
     var password  = req.body.password;
+    var email  = req.body.email;
     
     //if either password or username are missing,
     //return error message
@@ -20,6 +21,17 @@ module.exports = {
       return res.status(422).send({ error: 'You must provide both a username and a password.' });
     }
 
+    //sends confirmation email to user
+    sendgrid.send({
+      to:       email,
+      from:     'noreply@greenfield.com',
+      subject:  'Thanks for subscribing!',
+      text:     'Thanks for registering with our cooking app! May you discover your inner chef!'
+    }, function(err, json) {
+      if (err) { return console.error(err); }
+      console.log(json, 'woohoo');
+    });
+    
     //See if a user with the given email exists
     
     User.findOne({username: username}, function(err, existingUser) {

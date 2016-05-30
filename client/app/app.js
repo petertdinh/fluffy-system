@@ -30,8 +30,8 @@ angular.module('app', [
         .state('landing', {
             url: '/',
             templateUrl: 'app/components/landing/landingView.html',
-            controller: 'landingController',
-            authenticate: false,
+            // controller: 'landingController',
+            // authenticate: false,
         })
         .state('login', {
             url: '/login',
