@@ -1,6 +1,7 @@
 var Authentication = require('./serverControllers/authentication');
 var passportService = require('./services/passport');
 var PostHelpers = require('./serverControllers/postHelpers');
+var CurrentUser = require('./models/currentUser');
 
 var bodyParser = require('body-parser');
 var recipes = require('./recipesAPI.js');
@@ -30,6 +31,8 @@ module.exports = function(app){
     
     res.send({success: true});
   } );
+
+  app.get ('/logout', CurrentUser.clearUser);
 
   app.post('/signup', jsonParser, Authentication.signup);
 
