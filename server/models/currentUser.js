@@ -2,6 +2,7 @@
 var userLoggedIn = {};
 
 module.exports = {
+	userLoggedIn: userLoggedIn,
 	saveLoggedInUser: function(userObject){
 		userLoggedIn.username = userObject.username;
 		userLoggedIn.Id = userObject._id;
