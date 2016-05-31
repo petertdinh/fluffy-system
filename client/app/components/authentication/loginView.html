@@ -1,83 +1,23 @@
-<!-- <div id='Login'>
-  <h1>Login</h1>
-  <form name="LoginForm" ng-submit='login()'>
-    <input type='text' ng-model='user.username'>
-    <input type="password" ng-model='user.password'>
-    <button>Login</button>
-  </form>
-  
-</div> -->
-
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <title>Login</title>
-    <style>
-    	body {
-    	  padding-top: 40px;
-/*    	  padding-bottom: 40px;*/
-    	  background-color: #eee;
-    	}
-
-    	.form-login {
-    	  max-width: 330px;
-    	  padding: 15px;
-    	  margin: 0 auto;
-    	}
-    	.form-login .form-login-heading,
-    	.form-login .checkbox {
-    	  margin-bottom: 10px;
-    	}
-    	.form-login .checkbox {
-    	  font-weight: normal;
-    	}
-    	.form-login .form-control {
-    	  position: relative;
-    	  height: auto;
-    	  -webkit-box-sizing: border-box;
-    	     -moz-box-sizing: border-box;
-    	          box-sizing: border-box;
-    	  padding: 10px;
-    	  font-size: 16px;
-    	}
-    	.form-login .form-control:focus {
-    	  z-index: 2;
-    	}
-    	.form-login input[type="text"] {
-    	  margin-bottom: -1px;
-    	  border-bottom-right-radius: 0;
-    	  border-bottom-left-radius: 0;
-    	}
-    	.form-login input[type="password"] {
-    	  margin-bottom: 10px;
-    	  border-top-left-radius: 0;
-    	  border-top-right-radius: 0;
-    	}
-    </style>
-  </head>
-
-  <body>
-
-    <div class="container">
-
-      <form class="form-login" ng-submit='login()'>
-        <h2 class="form-login-heading">Please login</h2>
-        <label for="inputUsername" class="sr-only"></label>
-        <input type="text" id="inputUsername" class="form-control" placeholder="Username" ng-model="user.username" required autofocus>
-        <label for="inputPassword" class="sr-only"></label>
-        <input type="password" id="inputPassword" class="form-control" placeholder="Password" ng-model="user.password" required>
-        <div>
-        	<button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            <div class="card">
+                <div class="card-content">
+                    <form class="form-login" ng-submit='login()'>
+                        <h2 class="form-login-heading">Please login</h2>
+                        <label for="inputUsername" class="sr-only"></label>
+                        <input type="text" id="inputUsername" class="form-control sharp" placeholder="Username" ng-model="user.username" required autofocus>
+                        <label for="inputPassword" class="sr-only"></label>
+                        <input type="password" id="inputPassword" class="form-control sharp" placeholder="Password" ng-model="user.password" required>
+                        <div>
+                            <button class="btn btn-primary btn-lg sharp btn-block" id="login1" type="submit">Login</button>
+                        </div>
+                        <div>
+                            <a href="#/signup">Don't have an account? <strong>Signup!</strong></a>
+                        </div>
+                    </form>
+                </div>
+            </div>
         </div>
-        <div>
-        	<a href="#/signup">Don't have an account? <strong>Signup!</strong></a>
-        </div>
-      </form>
-
     </div>
-  </body>
-</html>
+</div>

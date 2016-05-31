@@ -1,35 +1,46 @@
-<div id="add" >
-
-   <div class="container">
-<h2>Select a recipe!</h2>
-   <div>
-       <div class="dropdown" >
-           <select name="select" ng-model="selectedRecipe" ng-options="recipe as recipe.title for recipe in recipes" ng-change="setRecipe(selectedRecipe)">
-             <option ng-repeat="recipe in recipes" ng-click="click()">{{recipe.title}}</option>
-           </select>
-       </div>
-   </div>
-   <div class="ingredients" ng-show="ingredients"><strong>Ingredients: </strong></div>
-       <ul ng-show="ingredients">
-           <li ng-repeat="ingredient in ingredients" ng-bind="ingredient"></li>
-       </ul>
-   <div class="instructions" ng-show="instructions"><strong>Instructions: </strong></div>
-   <div ng-bind="instructions"></div>
-   <br/>
-   <div class="mealIcon" ng-show="mealIcon"><img ng-src="{{mealIcon}}"/></div>
-   <br/>
-<form action="/upload" method="POST" enctype="multipart/form-data">
-  <fieldset class="form-group">
-    <label for="exampleTextarea">Comments</label>
-    <textarea class="form-control" id="exampleTextarea" rows="3" name="text"></textarea>
-  </fieldset>
-  <fieldset class="form-group">
-    <label for="exampleInputFile">File input</label>
-    <input type="file" class="form-control-file" id="exampleInputFile" name="image">
-    <input ng-hide="hide" ng-model="title" name="title">
-  </fieldset>
-  <button type="submit" class="btn btn-primary">Submit</button>
-</form>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            <div class="card">
+                <div class="card-content">
+                    <div id="add">
+                        <h2>Select a recipe!</h2>
+                        <div>
+                            <div class="dropdown sharp">
+                                <select name="select" ng-model="selectedRecipe" ng-options="recipe as recipe.title for recipe in recipes" ng-change="setRecipe(selectedRecipe)">
+                                    <option ng-repeat="recipe in recipes" ng-click="click()">{{recipe.title}}</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="ingredients" ng-show="ingredients"><strong>Ingredients: </strong>
+                        </div>
+                        <ul ng-show="ingredients">
+                            <li ng-repeat="ingredient in ingredients" ng-bind="ingredient"></li>
+                        </ul>
+                        <div class="instructions" ng-show="instructions"><strong>Instructions: </strong>
+                        </div>
+                        <div ng-bind="instructions"></div>
+                        <br/>
+                        <div class="mealIcon" ng-show="mealIcon"><img ng-src="{{mealIcon}}" />
+                        </div>
+                        <br/>
+                        <form action="/upload" method="POST" enctype="multipart/form-data">
+                            <fieldset class="form-group">
+                                <label for="exampleTextarea">Comments</label>
+                                <textarea class="form-control sharp" id="exampleTextarea" rows="6" name="text"></textarea>
+                            </fieldset>
+                            <fieldset class="form-group">
+                                <label for="exampleInputFile">Upload a Photo!</label>
+                                <input type="file" class="form-control-file" id="exampleInputFile" name="image">
+                                <input ng-hide="hide" ng-model="title" name="title">
+                            </fieldset>
+                            <div style="text-align:center">
+                            <button type="submit" class="btn btn-primary sharp" id="submit1">Submit</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
-</div>
-

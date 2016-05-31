@@ -6,9 +6,10 @@ angular.module('app.home', [])
 	        $http.get('/home')
 	        .then(function(resp){
 	        	$scope.feeds = resp.data;
-	        	console.log("$scope.feeds in homeController.js: ", $scope.feeds);
+	        	console.log($scope.feeds);
 	        })
 	    }
 	    //calling getPosts on page load.
 	    getPosts();
     });
+
