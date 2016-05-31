@@ -21,9 +21,7 @@ angular.module('app.services', [])
 
 		var logout = function () {
 		  $window.localStorage.removeItem('com.bomb');
-			$http.get('/logout');
 		  $location.path('#/login');
-
 		};
 
 		return {
@@ -33,11 +31,3 @@ angular.module('app.services', [])
 			logout: logout,
 		};
 	})
-	.factory('currentUser', function(){
-		var currentUser = {};
-		saveUser = function() {};
-		testUser = function(){
-			console.log("currentUser!");
-		};
-		return {testUser:testUser};
-	});

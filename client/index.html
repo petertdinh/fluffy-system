@@ -1,44 +1,49 @@
 <!doctype html>
 <html lang="en" ng-app="app">
-    <head>
-        <meta charset="utf-8">
-        <title>Greenfield</title>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.1/animate.min.css">
-        <link rel="stylesheet" type="text/css" href="assets/css/style.css" /> 
-                <!--3rd party JS-->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.5/angular.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.5/angular-animate.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.13.0/moment.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-rc1/jquery.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.0/angular-ui-router.min.js"></script>
-        <!--main app modules-->
-        <script src="app/components/authentication/authController.js"></script>
-        <script src="app/components/home/homeController.js"></script>
-        <script src="app/components/add/addController.js"></script>
-        <script src="app/services.js"></script>
-        <script src="app/app.js"></script>
-    </head>
-    <body>
 
+<head>
+    <meta charset="utf-8">
+    <title>Tastly</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.1/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css" />
+    <!--3rd party JS-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.5/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.5/angular-animate.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.13.0/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-rc1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.0/angular-ui-router.min.js"></script>
+    <!--main app modules-->
+    <script src="app/components/authentication/authController.js"></script>
+    <script src="app/components/home/homeController.js"></script>
+    <script src="app/components/add/addController.js"></script>
+    <script src="app/services.js"></script>
+    <script src="app/app.js"></script>
+</head>
+
+<body>
     <div ng-controller="authController">
-    <nav class="navbar navbar-findcond navbar-fixed-top" ng-if="isAuth()">
-        <div class="container">
-            <div class="navbar-header">
-                <a class="navbar-brand" href="#">Greenfield</a>
+        <nav class="navbar navbar-findcond navbar-fixed-top" ng-if="isAuth()">
+            <div class="container">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#">Tastly</a>
+                </div>
+                <div class="collapse navbar-collapse" id="navbar">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="active"><a ui-sref="add">Add a Meal</a>
+                        </li>
+                        <li class="logout" ng-click='logout()'><a>Logout</a>
+                        </li>
+                    </ul>
+                </div>
             </div>
-            <div class="collapse navbar-collapse" id="navbar">
-                <ul class="nav navbar-nav navbar-right">
-                    <li class="active"><a ui-sref="add">Add a Meal</a></li>
-                    <li class="logout" ng-click='logout()'><a>Logout</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-    <br><br><br>
+        </nav>
+        <br>
+        <br>
+        <br>
     </div>
-    <main ui-view class="animate"></main>
+    <main ui-view class="animate center-me"></main>
+</body>
 
-    </body>
 </html>
