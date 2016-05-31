@@ -2,6 +2,7 @@ var recipes = require('../recipesAPI.js');
 var fs = require('fs');
 var posts = require("../models/post.js");
 var moment = require('moment');
+var CurrentUser = require('../models/currentUser');
 
 
 
@@ -16,7 +17,9 @@ module.exports = {
                 displayTime: time,
                 mealPhoto: post.mealPhoto,
                 mealName: post.mealName,
-                mealNotes: post.mealNotes
+                mealNotes: post.mealNotes,
+                user: CurrentUser.userLoggedIn.username,
+                userId: CurrentUser.userLoggedIn.Id
             };
             return copy;
          });

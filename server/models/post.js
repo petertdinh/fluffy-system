@@ -6,7 +6,9 @@ var postSchema = mongoose.Schema({
     timeStamp: Date,
     mealPhoto:  String,
     mealName: String,
-    mealNotes: String
+    mealNotes: String,
+    user: String,
+    userId: String
 });
 
 exports.Post = mongoose.model('Post', postSchema);

@@ -4,7 +4,7 @@ angular.module('app.auth', [])
 		$scope.user = {};
 
 		$scope.login = function(){
-			console.log($scope.user);
+			console.log("$scope.user in authController.js: ", $scope.user);
 			Auth.login($scope.user)
 			.then(function (token){
 				$window.localStorage.setItem('com.bomb', token);

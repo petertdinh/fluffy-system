@@ -1,6 +1,7 @@
 var jwt  = require('jwt-simple');
 var User = require('../models/user');
 var config = require('../config');
+var CurrentUser = require('../models/currentUser');
 var sendgrid = require('sendgrid')('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');
 // var Q    = require('q');
 
@@ -40,6 +41,9 @@ module.exports = {
         //return an error on failed save
         if(err) { return next(err); }
 
+        //set user as current user
+        CurrentUser.saveLoggedInUser(req.user);
+
         // respond to request indicating the user was created 
         //create and return token
         res.json({ token: tokenForUser(user) });
@@ -62,6 +66,8 @@ module.exports = {
   signin: function (req, res, next) {
     //username and password have checked out
     //we are giving the user a token
+    console.log(req.user);
+    CurrentUser.saveLoggedInUser(req.user);
     res.send( { token: tokenForUser(req.user) });
   }
  
