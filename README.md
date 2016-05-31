@@ -13,7 +13,7 @@ Social media login(Facebook, Google, etc.) Followers/Following. Posting more tha
 <figure><img src="https://upload.wikimedia.org/wikipedia/commons/b/b1/Meanstack-624x250.jpg" alt="mean stack"></figure>
 
 # Devs
-Michael Forster - Product Owner/Back End Developer
-Roberto Lewis - Scrum Master/Back End Developer
-Jon Huh - Front End Developer
-Peter Dinh - Front End Developer
+Michael Forster - Product Owner/Back End Developer <br>
+Roberto Lewis - Scrum Master/Back End Developer <br>
+Jon Huh - Front End Developer <br>
+Peter Dinh - Front End Developer <br>
